@@ -21,10 +21,20 @@
                   </div>
 
                   <div class="form-group">
-                      <label>Genre</label><br>
+                      <label>Album</label><br>
+                      {{ form.album }}
+                  </div>
 
+                  <div class="form-group">
+                      <label>Genre</label><br>
                       {{ form.genre }}
                   </div>
+
+                  <div>
+                    <label>Track Rating</label><br>
+                    {{ form.track_rating }}<br><br>
+                  </div>
+
 
                   <button type="submit" class="btn btn-sm btn-default">Submit</button>
               </form>

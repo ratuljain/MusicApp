@@ -1,4 +1,5 @@
-{% extends 'musicapp/base.html' %} {% block content %}
+{% extends 'musicapp/base.html' %}{% load likert_fa_stars %}
+ {% block content %}
 
 <section id="content">
     <section class="vbox">
@@ -44,8 +45,11 @@
                                     </a>
                                     <a class="clear" href="#">
                                         <span class="block text-ellipsis">{{ track.title }}</span>
-                                        <small class="text-muted">by {{ track.artist }}</small>
+                                        <small class="text-muted">by {{ track.artist }}</small><br>
+                                        <small class="text-muted">{{ track.album }}</small>
                                     </a>
+
+                                    {{ track.track_rating|fa_stars4 }}
                                 </li>
                             {% endfor %}
                         </section>

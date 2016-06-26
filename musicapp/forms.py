@@ -1,12 +1,11 @@
 from django import forms
-
 from .models import Genre, Track
 
 class AddTrackForm(forms.ModelForm):
 
     class Meta:
         model = Track
-        fields = ('title', 'artist', 'genre',)
+        fields = ('title', 'artist', 'album', 'track_rating', 'genre',)
 
         widgets={
                       "title":forms.TextInput(attrs={'class':'form-control'}),
