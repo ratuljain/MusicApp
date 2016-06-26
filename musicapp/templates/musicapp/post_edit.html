@@ -10,7 +10,7 @@
       <section class="panel panel-default">
           <header class="panel-heading font-bold">Add Track</header>
           <div class="panel-body">
-              <form role="form">
+              <form action="{% url 'post_list' %}" role="form">
                   <div class="form-group">
                       <label>Title</label>
                        {{ form.title }}
@@ -22,7 +22,7 @@
 
                   <div class="form-group">
                       <label>Genre</label><br>
-                      
+
                       {{ form.genre }}
                   </div>
 

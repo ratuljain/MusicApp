@@ -27,59 +27,27 @@
                                 <img class="img-full" src="/static/images/m43.jpg" alt="...">
                             </div>
                             <ul class="list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto">
+
+                            {% for track in posts %}
+
                                 <li class="list-group-item clearfix">
                                     <a href="#" class="jp-play-me pull-right m-t-sm m-l text-md">
                                         <i class="icon-control-play text"></i>
                                         <i class="icon-control-pause text-active"></i>
                                     </a>
                                     <a href="#" class="pull-left thumb-sm m-r">
-                                        <img src="/static/images/m0.jpg" alt="...">
+                                        {% if track.cover_image_url %}
+                                          <img src="{{ track.cover_image_url }}" alt="...">
+                                        {% else %}
+                                          <img src="https://unsplash.it/300/300/?random" alt="/static/images/m0.jpg">
+                                        {% endif %}
                                     </a>
                                     <a class="clear" href="#">
-                                        <span class="block text-ellipsis">Little Town</span>
-                                        <small class="text-muted">by Soph Ashe</small>
+                                        <span class="block text-ellipsis">{{ track.title }}</span>
+                                        <small class="text-muted">by {{ track.artist }}</small>
                                     </a>
                                 </li>
-                                <li class="list-group-item clearfix">
-                                    <a href="#" class="jp-play-me pull-right m-t-sm m-l text-md">
-                                        <i class="icon-control-play text"></i>
-                                        <i class="icon-control-pause text-active"></i>
-                                    </a>
-                                    <a href="#" class="pull-left thumb-sm m-r">
-                                        <img src="/static/images/m0.jpg" alt="...">
-                                    </a>
-                                    <a class="clear" href="#">
-                                        <span class="block text-ellipsis">Little Town</span>
-                                        <small class="text-muted">by Soph Ashe</small>
-                                    </a>
-                                </li>
-                                <li class="list-group-item clearfix">
-                                    <a href="#" class="jp-play-me pull-right m-t-sm m-l text-md">
-                                        <i class="icon-control-play text"></i>
-                                        <i class="icon-control-pause text-active"></i>
-                                    </a>
-                                    <a href="#" class="pull-left thumb-sm m-r">
-                                        <img src="/static/images/m0.jpg" alt="...">
-                                    </a>
-                                    <a class="clear" href="#">
-                                        <span class="block text-ellipsis">Little Town</span>
-                                        <small class="text-muted">by Soph Ashe</small>
-                                    </a>
-                                </li>
-                                <li class="list-group-item clearfix">
-                                    <a href="#" class="jp-play-me pull-right m-t-sm m-l text-md">
-                                        <i class="icon-control-play text"></i>
-                                        <i class="icon-control-pause text-active"></i>
-                                    </a>
-                                    <a href="#" class="pull-left thumb-sm m-r">
-                                        <img src="/static/images/m0.jpg" alt="...">
-                                    </a>
-                                    <a class="clear" href="#">
-                                        <span class="block text-ellipsis">Little Town</span>
-                                        <small class="text-muted">by Soph Ashe</small>
-                                    </a>
-                                </li>
-                            </ul>
+                            {% endfor %}
                         </section>
                     </section>
                 </aside>
