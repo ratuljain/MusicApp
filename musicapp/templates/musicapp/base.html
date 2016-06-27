@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/static/css/font.css" type="text/css">
   <link rel="stylesheet" href="/static/css/app.css" type="text/css">
   <link rel="stylesheet" href="/static/css/blog.css" type="text/css">
+  <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
 
   <!--[if lt IE 9]>
     <script src="/static/js/ie/html5shiv.js"></script>
@@ -27,7 +28,7 @@
         <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
           <i class="icon-list"></i>
         </a>
-        <a href="index.html" class="navbar-brand text-lt">
+        <a href="{% url 'post_list' %}" class="navbar-brand text-lt">
           <i class="icon-earphones"></i>
           <img src="/static/images/logo.png" alt="." class="hide">
           <span class="hidden-nav-xs m-l-sm">Musik</span>
@@ -220,7 +221,7 @@
   <script type="text/javascript" src="/static/js/jPlayer/add-on/jplayer.playlist.min.js"></script>
   <script type="text/javascript" src="/static/js/jPlayer/demo.js"></script>
   <!-- star rating -->
-
+  <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
 
 
 
