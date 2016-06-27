@@ -14,6 +14,8 @@ def makeQuery(album, artist):
 
     query = album + " " + artist
 
+    print url + urllib.urlencode({'q':query,'type':'album'})
+
     return url + urllib.urlencode({'q':query,'type':'album'})
 
 

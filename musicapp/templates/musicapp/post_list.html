@@ -1,5 +1,4 @@
-{% extends 'musicapp/base.html' %}{% load likert_fa_stars %}
- {% block content %}
+{% extends 'musicapp/base.html' %}{% load likert_fa_stars %} {% block content %}
 
 <section id="content">
     <section class="vbox">
@@ -29,29 +28,29 @@
                             </div>
                             <ul class="list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto">
 
-                            {% for track in posts %}
+                                {% for track in posts %}
 
                                 <li class="list-group-item clearfix">
-                                    <a href="#" class="jp-play-me pull-right m-t-sm m-l text-md">
-                                        <i class="icon-control-play text"></i>
-                                        <i class="icon-control-pause text-active"></i>
-                                    </a>
-                                    <a href="#" class="pull-left thumb-sm m-r">
+
+                                    <a href="" class="pull-left thumb-sm m-r">
                                         {% if track.cover_image_url %}
                                           <img src="{{ track.cover_image_url }}" alt="...">
                                         {% else %}
-                                          <img src="https://unsplash.it/300/300/?random" alt="/static/images/m0.jpg">
+                                          <img src="/static/images/no_album_art.jpg" alt="/static/images/m0.jpg">
                                         {% endif %}
                                     </a>
-                                    <a class="clear" href="#">
+                                    <a class="clear" href="{% url 'post_detail' pk=track.pk %}">
                                         <span class="block text-ellipsis">{{ track.title }}</span>
-                                        <small class="text-muted">{{ track.artist }}</small><br>
+                                        <small class="text-muted">{{ track.artist }}</small>
+                                        <br>
                                         <small class="text-muted">{{ track.album }}</small>
+                                        <br> {{ track.track_rating|fa_stars4 }}
+                                        <a href="{% url 'post_edit' pk=track.pk %}" >
+                                        <i class="fa fa-edit"></i>
                                     </a>
-
-                                    {{ track.track_rating|fa_stars4 }}
+                                    </a>
                                 </li>
-                            {% endfor %}
+                                {% endfor %}
                         </section>
                     </section>
                 </aside>
