@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'musicapp',
     'likert_field',
-
+    'haystack',
+    'whoosh',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -104,6 +105,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+    },
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/

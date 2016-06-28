@@ -3,7 +3,7 @@ import json
 import urllib2
 
 
-print urllib.urlencode({'q':'album:arrival artist:abba','type':'album'})
+# print urllib.urlencode({'q':'album:arrival artist:abba','type':'album'})
 
 def makeQuery(album, artist):
 
@@ -14,7 +14,7 @@ def makeQuery(album, artist):
 
     query = album + " " + artist
 
-    print url + urllib.urlencode({'q':query,'type':'album'})
+    # print url + urllib.urlencode({'q':query,'type':'album'})
 
     return url + urllib.urlencode({'q':query,'type':'album'})
 
@@ -33,7 +33,7 @@ def getAlbumArtURL(album, artist):
         artURL = parseJson(response)
         return artURL
     except:
-        print "nothing found"
+        # print "nothing found"
         return False
         # return "http://www.ifans.com/forums/attachments/noartplaceholder-png.38049/"
 

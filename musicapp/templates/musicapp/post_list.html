@@ -32,7 +32,7 @@
 
                                 <li class="list-group-item clearfix">
 
-                                    <a href="" class="pull-left thumb-sm m-r">
+                                    <a href="{% url 'post_detail' pk=track.pk %}" class="pull-left thumb-sm m-r">
                                         {% if track.cover_image_url %}
                                           <img src="{{ track.cover_image_url }}" alt="...">
                                         {% else %}
@@ -45,9 +45,9 @@
                                         <br>
                                         <small class="text-muted">{{ track.album }}</small>
                                         <br> {{ track.track_rating|fa_stars4 }}
-                                        <a href="{% url 'post_edit' pk=track.pk %}" >
-                                        <i class="fa fa-edit"></i>
-                                    </a>
+                                        <a href="{% url 'post_edit' pk=track.pk %}">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
                                     </a>
                                 </li>
                                 {% endfor %}
