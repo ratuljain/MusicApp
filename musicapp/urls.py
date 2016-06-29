@@ -4,6 +4,9 @@ from . import views
 urlpatterns = [
     url(r'^$', views.home, name='post_list'),
     url(r'^track/(?P<pk>\d+)/$', views.post_detail, name='post_detail'),
-    url(r'^post/new/$', views.post_new, name='post_new'),
-    url(r'^post/(?P<pk>\d+)/edit/$', views.post_edit, name='post_edit'),
+    url(r'^track/new/$', views.post_new, name='post_new'),
+    url(r'^track/(?P<pk>\d+)/edit/$', views.post_edit, name='post_edit'),
+    url(r'^genre/$', views.genre, name='genre_list'),
+    url(r'^genre/(?P<pk>\d+)/$', views.genre_songs, name='genre_songs'),
+    
 ]

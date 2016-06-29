@@ -1,4 +1,5 @@
-{% extends 'musicapp/base.html' %}{% load likert_fa_stars %} {% block content %}
+{% extends 'musicapp/base.html' %}{% load likert_fa_stars %}{% load el_pagination_tags %}
+{% block content %}
 
 <section id="content">
     <section class="vbox">
@@ -24,13 +25,20 @@
                                     <a href="{% url 'post_new' %}" class="m-r-sm"><i class="icon-plus"></i></a>
 
                                 </div>
-                                <img class="img-full" src="/static/images/m43.jpg" alt="...">
+
+
+                                <img class="img-full" src="http://s3.favim.com/orig/46/black-and-white-classic-disk-music-photography-Favim.com-419665.jpg" alt="...">
                             </div>
                             <ul class="list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto">
 
-                                {% for track in posts %}
+
+
+
+                                {% paginate tracks %}
+                                {% for track in tracks %}
 
                                 <li class="list-group-item clearfix">
+
 
                                     <a href="{% url 'post_detail' pk=track.pk %}" class="pull-left thumb-sm m-r">
                                         {% if track.cover_image_url %}
@@ -50,7 +58,17 @@
                                         </a>
                                     </a>
                                 </li>
-                                {% endfor %}
+                                 {% endfor %}
+                                 {% get_pages %}
+                                <ul class="pagination">
+                                    {% for page in pages %}
+                                    <li>
+                                        <a href="{{ page.path }}" rel="page" class="endless_page_link">{{ page.number }}</a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+
+
                         </section>
                     </section>
                 </aside>
@@ -250,9 +268,7 @@
                         </div>
                     </div>
 
-                    <div class="jp-no-solution hide" style="display: none;">
-                        <span>Update Required</span> To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
-                    </div>
+
                 </div>
             </div>
         </footer>

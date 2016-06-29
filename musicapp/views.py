@@ -1,13 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import AddTrackForm
 from django.http import HttpResponse
-from .models import Track
+from .models import Track, Genre
 from . import getAlbumArt
 
 # Create your views here.
 def home(request):
     tracks = Track.objects.all().order_by('created_date')
-    return render(request, 'musicapp/post_list.html', {'posts': tracks})
+    return render(request, 'musicapp/post_list.html', {'tracks': tracks})
 
 def post_detail(request, pk):
     track = get_object_or_404(Track, pk=pk)
@@ -33,7 +33,7 @@ def post_new(request):
                 post.album = 'Unknown'
             post.save()
             tracks = Track.objects.all().order_by('created_date')
-            return render(request, 'musicapp/post_list.html', {'posts': tracks})
+            return render(request, 'musicapp/post_list.html', {'tracks': tracks})
     else:
         form = AddTrackForm()
     return render(request, 'musicapp/post_edit.html', {'form': form})
@@ -59,3 +59,15 @@ def post_edit(request, pk):
     else:
         form = AddTrackForm(instance=post)
     return render(request, 'musicapp/post_edit.html', {'form': form})
+
+def genre(request):
+    tracks = Track.objects.all().order_by('created_date')
+    genres = Genre.objects.all()
+    return render(request, 'musicapp/genre.html', {'genres': genres, 'tracks': tracks})
+
+def genre_songs(request, pk):
+    genres = Genre.objects.all()
+    genre_obj = get_object_or_404(Genre, pk=pk)
+    tracks = genre_obj.track_set.all()
+    # print post
+    return render(request, 'musicapp/genre_songs.html', {'genres': genres, 'genre' : genre_obj, 'tracks': tracks})

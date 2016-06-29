@@ -27,14 +27,20 @@ def getAlbumArtURL(album, artist):
     spotURL = makeQuery(album, artist)
     response = json.load(urllib2.urlopen(spotURL))
 
-    # print response
+    print response
 
     try:
         artURL = parseJson(response)
         return artURL
     except:
         # print "nothing found"
-        return False
+        spotURL = makeQuery('*', artist)
+        response = json.load(urllib2.urlopen(spotURL))
+        try:
+            artURL = parseJson(response)
+            return artURL
+        except:
+            return False
         # return "http://www.ifans.com/forums/attachments/noartplaceholder-png.38049/"
 
 
