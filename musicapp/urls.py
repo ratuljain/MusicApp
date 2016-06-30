@@ -8,5 +8,6 @@ urlpatterns = [
     url(r'^track/(?P<pk>\d+)/edit/$', views.post_edit, name='post_edit'),
     url(r'^genre/$', views.genre, name='genre_list'),
     url(r'^genre/(?P<pk>\d+)/$', views.genre_songs, name='genre_songs'),
-    
+    url(r'^genre/new/$', views.genre_new, name='genre_new'),
+
 ]

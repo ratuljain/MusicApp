@@ -1,6 +1,6 @@
 {% extends 'musicapp/base.html' %} {% block content %}
 <!-- <h1>New post</h1> -->
-<form method="POST" class="post-form">{% csrf_token %}
+
 
 
 
@@ -10,7 +10,7 @@
       <section class="panel panel-default">
           <header class="panel-heading font-bold">Add Track</header>
           <div class="panel-body">
-              <form action="{% url 'post_list' %}" role="form">
+              <form method="POST" class="post-form">{% csrf_token %}
                   <div class="form-group">
                       <label>Title</label>
                        {{ form.title }}
@@ -28,6 +28,10 @@
                   <div class="form-group">
                       <label>Genre</label><br>
                       {{ form.genre }}
+                      &nbsp; &nbsp;
+                      <a href="{% url 'genre_new' %}" class="m-r-sm"><i class="icon-plus"></i></a>
+                      <span class="h4 font-thin">   Add Genre&nbsp;</span>
+
                   </div>
 
                   <div>
@@ -45,6 +49,5 @@
 </div>
 
 
-</form>
 
 {% endblock %}

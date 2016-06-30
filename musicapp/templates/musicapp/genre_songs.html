@@ -12,7 +12,10 @@
 
                     <section class="vbox animated fadeInUp">
                         <section class="scrollable hover">
-                            <div class="list-group no-radius no-border no-bg m-t-n-xxs m-b-none auto">
+                            <div class="list-group no-radius no-border no-bg m-t-n-xxs m-b-none auto"><br>
+                              <span class="h4 font-thin">  &nbsp; &nbsp; Add Genre&nbsp;</span>
+                              <a href="{% url 'genre_new' %}" class="m-r-sm"><i class="icon-plus"></i></a>
+                              <br><br>
                                 {% for genre in genres %}
                                 <a href="{% url 'genre_songs' pk=genre.pk %}" class="list-group-item">
                                             {{ genre.name }}

@@ -1,8 +1,10 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from .forms import AddTrackForm
+from django.shortcuts import render, get_object_or_404, redirect, render_to_response
+from django.http import HttpResponseRedirect
+from .forms import AddTrackForm, AddGenreForm
 from django.http import HttpResponse
 from .models import Track, Genre
 from . import getAlbumArt
+from django.core.urlresolvers import reverse
 
 # Create your views here.
 def home(request):
@@ -33,7 +35,8 @@ def post_new(request):
                 post.album = 'Unknown'
             post.save()
             tracks = Track.objects.all().order_by('created_date')
-            return render(request, 'musicapp/post_list.html', {'tracks': tracks})
+            return HttpResponseRedirect(reverse('post_list'))
+            # return render(request, 'musicapp/post_list.html', {'tracks': tracks})
     else:
         form = AddTrackForm()
     return render(request, 'musicapp/post_edit.html', {'form': form})
@@ -71,3 +74,23 @@ def genre_songs(request, pk):
     tracks = genre_obj.track_set.all()
     # print post
     return render(request, 'musicapp/genre_songs.html', {'genres': genres, 'genre' : genre_obj, 'tracks': tracks})
+
+def genre_new(request):
+    if request.method == "POST":
+        form = AddGenreForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            redirect_flag = request.POST.get("flag", "")  # redirect to different places depending upon where it was clicked
+            post.save()
+            genres = Genre.objects.all()
+            print redirect_flag
+            if redirect_flag == '0':
+                return HttpResponseRedirect(reverse('post_new'))
+            elif redirect_flag == '1':
+                return HttpResponseRedirect(reverse('genre_list'))
+            else:
+                return HttpResponseRedirect('/')
+            # return render_to_response('musicapp/genre.html', {'form': AddTrackForm()})
+    else:
+        form = AddGenreForm()
+    return render(request, 'musicapp/genre_edit.html', {'form': form})
