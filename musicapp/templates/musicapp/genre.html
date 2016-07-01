@@ -20,7 +20,7 @@
                                   </a>
                                     {% for genre in genres %}
                                         <a href="{% url 'genre_songs' pk=genre.pk %}" class="list-group-item">
-                                            {{ genre.name }}
+                                            {{ genre.name }} 
                                         </a>
                                     {% endfor %}
                                 </div>

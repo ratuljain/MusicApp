@@ -9,5 +9,5 @@ urlpatterns = [
     url(r'^genre/$', views.genre, name='genre_list'),
     url(r'^genre/(?P<pk>\d+)/$', views.genre_songs, name='genre_songs'),
     url(r'^genre/new/$', views.genre_new, name='genre_new'),
-
+    url(r'^genre/(?P<pk>\d+)/edit/$', views.genre_edit, name='genre_edit'),
 ]

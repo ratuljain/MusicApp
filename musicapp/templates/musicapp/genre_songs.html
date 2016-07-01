@@ -30,7 +30,9 @@
                 <section>
                     <section class="vbox">
                         <section class="scrollable padder-lg">
-                            <h2 class="font-thin m-b">{{genre.name}}</h2><br>
+                            <h2 class="font-thin m-b">{{genre.name}}</h2><a href="{% url 'genre_edit' pk=genre.pk %}">
+                                <i class="fa fa-edit"></i>
+                            </a><br><br>
                             <div class="row row-sm">
                                 {% for track in tracks %}
                                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">

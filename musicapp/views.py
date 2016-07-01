@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from .models import Track, Genre
 from . import getAlbumArt
 from django.core.urlresolvers import reverse
-
+from haystack.management.commands import update_index
 # Create your views here.
 def home(request):
     tracks = Track.objects.all().order_by('created_date')
@@ -93,4 +93,18 @@ def genre_new(request):
             # return render_to_response('musicapp/genre.html', {'form': AddTrackForm()})
     else:
         form = AddGenreForm()
+    return render(request, 'musicapp/genre_edit.html', {'form': form})
+
+def genre_edit(request, pk):
+    post = get_object_or_404(Genre, pk=pk)
+    if request.method == "POST":
+        form = AddGenreForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            
+            return redirect('genre_songs', pk=post.pk)
+            # return HttpResponseRedirect(reverse('genre_list'))
+    else:
+        form = AddGenreForm(instance=post)
     return render(request, 'musicapp/genre_edit.html', {'form': form})
