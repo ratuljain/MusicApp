@@ -6,6 +6,9 @@ from .models import Track, Genre
 from . import getAlbumArt
 from django.core.urlresolvers import reverse
 from haystack.management.commands import update_index
+from api import loaded_model
+
+# loaded_model = graphlab.load_model('/Users/lol/Desktop/Machine Learning/personalized_model')
 # Create your views here.
 def home(request):
     tracks = Track.objects.all().order_by('created_date')
@@ -13,8 +16,16 @@ def home(request):
 
 def post_detail(request, pk):
     track = get_object_or_404(Track, pk=pk)
-    # print post
-    return render(request, 'musicapp/post_detail.html', {'track': track})
+    recom_input = track.title.strip() + " - " + track.artist.strip()
+    print recom_input
+    recomList = loaded_model.get_similar_items([recom_input])['similar']
+    flag = True
+    if len(recomList) == 0:
+            flag = False
+    return render(request, 'musicapp/post_detail.html', {'track': track, 'recommendations': recomList, 'flag': flag })
+
+    return render(request, 'musicapp/post_detail.html', {'track': track, 'recommendations': recomList})
+    # return render(request, 'musicapp/post_detail.html', {'track': track, 'recommendations': recom_input})
 # def post_new(request):
 #     form = AddTrackForm()
 #     return render(request, 'musicapp/post_edit.html', {'form': form})
@@ -102,7 +113,7 @@ def genre_edit(request, pk):
         if form.is_valid():
             post = form.save(commit=False)
             post.save()
-            
+
             return redirect('genre_songs', pk=post.pk)
             # return HttpResponseRedirect(reverse('genre_list'))
     else:

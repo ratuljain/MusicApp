@@ -61,7 +61,12 @@
                                                             <div class="wpb_wrapper">
                                                                 <div class="wpb_text_column wpb_content_element ">
                                                                     <div class="wpb_wrapper">
-                                                                        <h4>Similar Songs</h4> </div>
+                                                                      {% if flag %}
+                                                                        <h4>Similar Songs</h4>
+                                                                      {% else %}
+                                                                        <h4>No Similar Songs</h4>
+                                                                      {% endif %}
+                                                                        </div>
                                                                 </div>
                                                                 <div class="wpb_text_column wpb_content_element ">
                                                                     <div class="wpb_wrapper"> </div>
@@ -94,21 +99,18 @@
                                                 <div class="jp-type-playlist">
                                                     <div class="jp-playlist ">
                                                         <ul class="tracks-list" style="display: block;">
-                                                            <li>
-                                                                <div>
-                                                                    <a href="javascript:;" class="jp-playlist-item" tabindex="0"> <strong class="title">Helvetica Wes Anderson</strong> <span class="track-name">Heavy loud</span> </a>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div>
-                                                                    <a href="javascript:;" class="jp-playlist-item" tabindex="0"> <strong class="title">Helvetica Wes Anderson</strong> <span class="track-name">Heavy loud</span> </a>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div>
-                                                                    <a href="javascript:;" class="jp-playlist-item" tabindex="0"> <strong class="title">Helvetica Wes Anderson</strong> <span class="track-name">Heavy loud</span> </a>
-                                                                </div>
-                                                            </li>
+
+                                                            {% for track in recommendations %}
+                                                              <li>
+                                                                  <div>
+                                                                      <a href="javascript:;" class="jp-playlist-item" tabindex="0"> <strong class="title">Helvetica Wes Anderson</strong> <span class="track-name">{{track}}</span> </a>
+                                                                  </div>
+                                                              </li>
+                                                              {% empty %}
+
+                                                            {% endfor %}
+
+
                                                         </ul>
                                                     </div>
                                                 </div>
