@@ -27,12 +27,18 @@
                 </aside>
                 <!-- / side content -->
 
+
                 <section>
                     <section class="vbox">
                         <section class="scrollable padder-lg">
-                            <h2 class="font-thin m-b">{{genre.name}}</h2><a href="{% url 'genre_edit' pk=genre.pk %}">
-                                <i class="fa fa-edit"></i>
-                            </a><br><br>
+                          {% if not tracks %}
+                              <h2 class="font-thin m-b"> Nothing to see here. </h2>
+                          {% else %}
+                          <a href="{% url 'genre_edit' pk=genre.pk %}"><h2  class="font-thin m-b">{{genre.name}}</h2></a>
+                            <a href="{% url 'genre_edit' pk=genre.pk %}"><i class="fa fa-edit"></i></a>
+                          </a>
+                          {% endif %}
+                            <br><br>
                             <div class="row row-sm">
                                 {% for track in tracks %}
                                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0">
-    <title>Helvetica Wes Anderson — Lush Rock</title>
+    <title>{{track.title}}</title>
 </head>
 
 <body class="single single-album postid-125 layout-wide fixed_header wpb-js-composer js-comp-ver-4.8.1 vc_responsive" onload="jQuery('header').animate({'opacity': 1})">
@@ -28,7 +28,7 @@
         <div id="wrapper">
             <div class="container">
                 <div class="boxed"> <span class="heading-t"></span>
-                      <a href="{% url 'post_list' %}"><h1>Discographies</h1> <span class="heading-b"></span></a>
+                      <a href="{% url 'post_list' %}"><h1>Home</h1> <span class="heading-b"></span></a>
                     <div id="post-125" class="info-section post-125 album type-album status-publish has-post-thumbnail hentry">
                         <h2>{{track.title}}</h2>
                         <div class="aside">
@@ -38,13 +38,6 @@
                               <div class="image"><img width="300" height="300" src="/static/images/no_album_art.jpg" class="attachment-330x330 wp-post-image" alt="album_05_robin_lambrecht"></div>
                               <!-- <img src="https://unsplash.it/300/300/?random" alt="/static/images/m0.jpg"> -->
                           {% endif %}
-                          <div class="buttons-block">
-                                <div class="release-date">Release Date: <span>February 4, 2014</span></div>
-                                <div class="available-now">Available now on:</div>
-                                <ul class="store-list">
-                                    <li><a class="button" href="http://www.bandcamp.com/someIDhereHAHAH">Bandcamp</a></li>
-                                </ul>
-                            </div>
                         </div>
                         <div class="description-column">
                             <div class="iron_widget_radio playlist_enabled">

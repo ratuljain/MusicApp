@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from . import views
 
 urlpatterns = [
@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^genres/(?P<pk>\d+)/$', views.genre_songs, name='genre_songs'),
     url(r'^genre/new/$', views.genre_new, name='genre_new'),
     url(r'^genre/(?P<pk>\d+)/edit/$', views.genre_edit, name='genre_edit'),
+    # url(r'^search/', include('haystack.urls'), name='search_stuff'),
 ]

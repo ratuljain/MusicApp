@@ -4,3 +4,15 @@
     margin-right: 150px;
     margin-left: 80px;*/
 }
+
+
+div#one {
+    width: 1%;
+
+    float: left;
+}
+div#two {
+    margin-left: 15%;
+
+
+}
