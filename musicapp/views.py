@@ -43,7 +43,7 @@ def post_new(request):
             print urlArt
             if urlArt:
                 post.cover_image_url = urlArt
-            if post.album == '*':
+            if post.album == '*' or post.album == '':
                 post.album = 'Unknown'
             post.save()
             tracks = Track.objects.all().order_by('created_date')
