@@ -6,7 +6,7 @@ from .models import Track, Genre
 from . import getAlbumArt
 from django.core.urlresolvers import reverse
 from haystack.management.commands import update_index
-from api import loaded_model
+# from api import loaded_model
 
 # loaded_model = graphlab.load_model('/Users/lol/Desktop/Machine Learning/personalized_model')
 # Create your views here.
@@ -18,7 +18,8 @@ def post_detail(request, pk):
     track = get_object_or_404(Track, pk=pk)
     recom_input = track.title.strip() + " - " + track.artist.strip()
     print recom_input
-    recomList = loaded_model.get_similar_items([recom_input])['similar']
+    # recomList = loaded_model.get_similar_items([recom_input])['similar']
+    recomList = []
     flag = True
     if len(recomList) == 0:
             flag = False
